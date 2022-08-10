@@ -7,9 +7,11 @@ spec:
     spec:
       containers:
       - name: hivemeta
-        image: anxhela21/hivemetastore:v3
+        image: quay.io/anxhela21/hivemetastore:v3
         command: ["/opt/hive-metastore/bin/schematool"]
         args: ["--verbose" ,"-initSchema" , "-dbType", "mysql" , "-userName", "root",
           "-passWord", "mypass" , "-url", "jdbc:mysql://metastore-db:13306/metastore_db?createDatabaseIfNotExist=true"]
+      imagePullSecrets:
+      - name: anxhela21-obslytics-pull-secret
       restartPolicy: Never
   backoffLimit: 4

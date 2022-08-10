@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: metastore
-        image: anxhela21/hivemetastore:v3
+        image: quay.io/anxhela21/hivemetastore:v3
         env:
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
@@ -54,6 +54,8 @@ spec:
             memory: "32G"
             cpu: 4
         imagePullPolicy: Always
+      imagePullSecrets:
+      - name: anxhela21-obslytics-pull-secret
       volumes:
         - name: metastore-cfg-vol
           configMap:
